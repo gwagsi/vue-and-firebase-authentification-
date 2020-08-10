@@ -1,17 +1,37 @@
-// src/firebaseConfig.js
-import firebase from "firebase";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyBnyZ0eIkPBgBlRgyMqX2WhPMs_GRIFnUc",
-    authDomain: "teacher-booking-app.firebaseapp.com",
-    databaseURL: "https://teacher-booking-app.firebaseio.com",
-    projectId: "teacher-booking-app",
-    storageBucket: "teacher-booking-app.appspot.com",
-    messagingSenderId: "464027149994",
-    appId: "1:464027149994:web:764c1ae7f1281d8c6312d3",
-    measurementId: "G-476SLNYTF4"
+  apiKey: "AIzaSyAsXO_H0J1PhW2OyNE0tWb1JeCQZuT0o-Q",
+  authDomain: "learning-pack.firebaseapp.com",
+  databaseURL: "https://learning-pack.firebaseio.com",
+  projectId: "learning-pack",
+  storageBucket: "learning-pack.appspot.com",
+  messagingSenderId: "1080629456478",
+  appId: "1:1080629456478:web:5ac6040aac2834efdbcecf",
+  measurementId: "G-EN2PDBFNEB",
 };
-
 // Initialize Firebase
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+// utils
+const db = firebase.firestore();
+const auth = firebase.auth();
+
+// collection references
+const usersCollection = db.collection("users");
+const postsCollection = db.collection("posts");
+const commentsCollection = db.collection("comments");
+const likesCollection = db.collection("likes");
+
+// export utils/refs
+export {
+  db,
+  auth,
+  usersCollection,
+  postsCollection,
+  commentsCollection,
+  likesCollection,
+};

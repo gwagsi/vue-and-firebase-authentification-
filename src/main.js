@@ -15,6 +15,8 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import store from "./store";
+import { auth } from "./firebaseConfig";
 
 import MaterialKit from "./plugins/material-kit";
 
@@ -23,18 +25,28 @@ Vue.config.productionTip = false;
 Vue.use(MaterialKit);
 
 const NavbarStore = {
-  showNavbar: false
+  showNavbar: false,
 };
 
 Vue.mixin({
   data() {
     return {
-      NavbarStore
+      NavbarStore,
     };
-  }
+  },
 });
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount("#app");
+let app;
+auth.onAuthStateChanged((user) => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      render: (h) => h(App),
+    }).$mount("#app");
+  }
+
+  if (user) {
+    store.dispatch("fetchUserProfile", user);
+  }
+});

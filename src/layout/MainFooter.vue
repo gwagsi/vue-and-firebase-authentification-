@@ -8,31 +8,25 @@
       <nav>
         <ul>
           <li>
-            <a href="https://www.creative-tim.com">
-              Creative Tim
-            </a>
+            <a href="/#/">Learning Pack</a>
           </li>
           <li>
-            <a href="https:///presentation.creative-tim.com">
-              About Us
-            </a>
+            <a href="/#/about">About Us</a>
           </li>
           <li>
-            <a href="https:///blog.creative-tim.com">
-              Blog
-            </a>
+            <a href="/#/blog">Blog</a>
           </li>
           <li>
-            <a href="https://www.creative-tim.com/license">
-              Licenses
-            </a>
+            <a href="/#/tutor">Join Our Team</a>
           </li>
         </ul>
       </nav>
       <div class="copyright">
-        &copy; {{ year }}, made with <md-icon>favorite</md-icon> by
-        <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a>
-        for a better web.
+        &copy; {{ year }}, made with
+        <md-icon>favorite</md-icon>by
+        <a href="https://www.feyins.com" target="_blank">FEYINS</a>
+        And
+        <a href="https://www.gwagsig.com" target="_blank">Gwagsi Glenn</a>
       </div>
     </div>
   </footer>

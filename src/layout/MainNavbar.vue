@@ -27,39 +27,23 @@
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
             <md-list>
-
-              <md-list-item
-                href="#/"
-                target=""
-              >
+              <md-list-item href="#/" target>
                 <i class="material-icons">house</i>
                 <p>Home</p>
               </md-list-item>
-              <md-list-item
-                href="#/"
-                target=""
-              >
+              <md-list-item href="#/howto" target>
                 <i class="material-icons">accessibility</i>
                 <p>How To</p>
               </md-list-item>
-              <md-list-item
-                href="#/how-to"
-                target=""
-              >
+              <md-list-item href="#/tutor" target>
                 <i class="material-icons">people_alt</i>
                 <p>Become A Tutor</p>
               </md-list-item>
-                <md-list-item
-                href="#/tutor"
-                target=""
-              >
+              <md-list-item href="#/price" target>
                 <i class="material-icons">local_atm</i>
                 <p>Pricing</p>
               </md-list-item>
-                <md-list-item
-                href="#/pricing"
-                target=""
-              >
+              <md-list-item href="#/login" target>
                 <i class="material-icons">account_circle</i>
                 <p>Login</p>
               </md-list-item>
@@ -80,19 +64,19 @@
                       </md-button>
                       <ul class="dropdown-menu dropdown-with-icons">
                         <li>
-                          <a href="#/">
+                          <a href="#/about">
                             <i class="material-icons">layers</i>
                             <p>About Us</p>
                           </a>
                         </li>
                         <li>
-                          <a href="#/">
+                          <a href="#/faq">
                             <i class="material-icons">layers</i>
                             <p>FAQ</p>
                           </a>
                         </li>
                         <li>
-                          <a href="#/">
+                          <a href="#/guide">
                             <i class="material-icons">layers</i>
                             <p>Guide</p>
                           </a>
@@ -103,35 +87,20 @@
                 </a>
               </li>
 
-              <md-list-item
-                href="https://twitter.com/"
-                target="_blank"
-              >
+              <md-list-item href="https://twitter.com/" target="_blank">
                 <i class="fab fa-twitter"></i>
                 <p class="hidden-lg">Twitter</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Twitter</md-tooltip
-                >
+                <md-tooltip md-direction="bottom">Follow us on Twitter</md-tooltip>
               </md-list-item>
-              <md-list-item
-                href="https://www.facebook.com/"
-                target="_blank"
-              >
+              <md-list-item href="https://www.facebook.com/" target="_blank">
                 <i class="fab fa-facebook-square"></i>
                 <p class="hidden-lg">Facebook</p>
-                <md-tooltip md-direction="bottom"
-                  >Like us on Facebook</md-tooltip
-                >
+                <md-tooltip md-direction="bottom">Like us on Facebook</md-tooltip>
               </md-list-item>
-              <md-list-item
-                href="https://www.instagram.com/"
-                target="_blank"
-              >
+              <md-list-item href="https://www.instagram.com/" target="_blank">
                 <i class="fab fa-instagram"></i>
                 <p class="hidden-lg">Instagram</p>
-                <md-tooltip md-direction="bottom"
-                  >Follow us on Instagram</md-tooltip
-                >
+                <md-tooltip md-direction="bottom">Follow us on Instagram</md-tooltip>
               </md-list-item>
             </md-list>
           </div>
