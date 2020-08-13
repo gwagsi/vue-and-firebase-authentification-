@@ -13,10 +13,9 @@ import About from "./views/About.vue";
 import Faq from "./views/Faq.vue";
 import HowTo from "./views/HowTo.vue";
 import Price from "./views/Price.vue";
-import Signup from "./views/Signup.vue";
 import TeacherSignup from "./views/TeacherSignup.vue";
 import Tutor from "./views/Tutor.vue";
-import { auth } from "./firebaseConfig";
+import { auth } from "./firebase";
 
 Vue.use(Router);
 
@@ -75,15 +74,7 @@ const routes = [
       footer: { backgroundColor: "black" },
     },
   },
-  {
-    path: "/signup",
-    name: "signup",
-    components: { default: Signup, header: MainNavbar, footer: MainFooter },
-    props: {
-      header: { colorOnScroll: 400 },
-      footer: { backgroundColor: "black" },
-    },
-  },
+
   {
     path: "/teacher-signup",
     name: "teacher-signup",
@@ -140,23 +131,27 @@ const routes = [
       header: { colorOnScroll: 400 },
       footer: { backgroundColor: "black" },
     },
-    meta: {
-      requiresAuth: true,
-    },
   },
 ];
+
 const router = new Router({
+  //mode: "history",
+  base: process.env.BASE_URL,
   routes,
 });
+// navigation guard to check for logged in users
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
 
   if (requiresAuth && !auth.currentUser) {
-    next("/login");
+    next({ name: "login" });
   } else {
     next();
   }
 });
+
+export default router;
+
 scrollBehavior: (to) => {
   if (to.hash) {
     return { selector: to.hash };
@@ -164,4 +159,3 @@ scrollBehavior: (to) => {
     return { x: 0, y: 0 };
   }
 };
-export default router;

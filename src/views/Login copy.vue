@@ -141,8 +141,7 @@
 
 <script>
 import { LoginCard } from "@/components";
-import * as firebase from "firebase/app";
-import "firebase/auth";
+import Firebase from "firebase";
 
 export default {
   components: {
@@ -176,60 +175,25 @@ export default {
     togglePasswordReset() {
       this.showPasswordReset = !this.showPasswordReset;
     },
-    login: function() {
-      firebase
-        .auth()
+    login() {
+      Firebase.auth()
         .signInWithEmailAndPassword(
           this.loginForm.email,
           this.loginForm.password
         )
-        .then(
-          user => {
-            this.$router.replace("/profile");
-          },
-          error => {
-            alert(error.message);
-          }
-        );
-    },
-    // login() {
-    //   Firebase.auth()
-    //     .signInWithEmailAndPassword(
-    //       this.loginForm.email,
-    //       this.loginForm.password
-    //     )
-    //     .then(data => {
-    //       data.user
-    //         .updateProfile({
-    //           displayName: this.form.name
-    //         })
-    //         .then(() => {});
-    //     })
-    //     .catch(err => {
-    //       this.error = err.message;
-    //     });
-    // },
-    signup: function() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(
-          this.signupForm.email,
-          this.signupForm.password
-        )
-        .catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
+        .then(data => {
+          data.user
+            .updateProfile({
+              displayName: this.form.name
+            })
+            .then(() => {});
         })
-        .then(
-          user => {
-            this.$router.replace("profile");
-          },
-          error => {
-            alert(error.message);
-          }
-        );
+        .catch(err => {
+          this.error = err.message;
+        });
+    },
+    signup() {
+      Firebase.signup(this.signupForm.email, this.signupForm.password);
     },
     googleAuth() {
       Firebase.googleAuth();
@@ -258,6 +222,12 @@ export default {
     },
     authenticated() {
       return this.user.loggedIn;
+    },
+    firstName() {
+      if (this.user.data.displayName) {
+        return this.user.data.displayName.split(" ")[0];
+      }
+      return null;
     }
   }
 };

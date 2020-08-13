@@ -43,7 +43,8 @@
                 <i class="material-icons">local_atm</i>
                 <p>Pricing</p>
               </md-list-item>
-              <md-list-item href="#/login" target>
+
+              <md-list-item v-if="!user.loggedIn" href="#/login" target>
                 <i class="material-icons">account_circle</i>
                 <p>Login</p>
               </md-list-item>
@@ -86,6 +87,9 @@
                   </div>
                 </a>
               </li>
+              <md-list-item v-if="user.loggedIn">
+                <md-button @click="signOut()">Logout</md-button>
+              </md-list-item>
 
               <md-list-item href="https://twitter.com/" target="_blank">
                 <i class="fab fa-twitter"></i>
@@ -125,6 +129,8 @@ function resizeThrottler(actualResizeHandler) {
 }
 
 import MobileMenu from "@/layout/MobileMenu";
+import { mapGetters } from "vuex";
+import firebase from "firebase";
 export default {
   components: {
     MobileMenu
@@ -157,10 +163,10 @@ export default {
     };
   },
   computed: {
-    showDownload() {
-      const excludedRoutes = ["login", "landing", "profile"];
-      return excludedRoutes.every(r => r !== this.$route.name);
-    }
+    ...mapGetters({
+      // map `this.user` to `this.$store.getters.user`
+      user: "user"
+    })
   },
   methods: {
     bodyClick() {
@@ -206,6 +212,16 @@ export default {
       if (element_id) {
         element_id.scrollIntoView({ block: "end", behavior: "smooth" });
       }
+    },
+    signOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace({
+            name: "home"
+          });
+        });
     }
   },
   mounted() {

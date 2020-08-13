@@ -1,9 +1,6 @@
 <template>
   <div class="wrapper">
-    <parallax
-      class="section page-header header-filter"
-      :style="headerStyle"
-    ></parallax>
+    <parallax class="section page-header header-filter" :style="headerStyle"></parallax>
     <div class="main main-raised">
       <div class="section profile-content">
         <div class="container">
@@ -11,35 +8,26 @@
             <div class="md-layout-item md-size-50 mx-auto">
               <div class="profile">
                 <div class="avatar">
-                  <img
-                    :src="img"
-                    alt="Circle Image"
-                    class="img-raised rounded-circle img-fluid"
-                  />
+                  <img :src="img" alt="Circle Image" class="img-raised rounded-circle img-fluid" />
                 </div>
                 <div class="name">
                   <h3 class="title">Carla Hortensia</h3>
                   <h6>Designer</h6>
-                  <md-button
-                    href="javascript:void(0)"
-                    class="md-just-icon md-simple md-dribbble"
-                    ><i class="fab fa-dribbble"></i
-                  ></md-button>
-                  <md-button
-                    href="javascript:void(0)"
-                    class="md-just-icon md-simple md-twitter"
-                    ><i class="fab fa-twitter"></i
-                  ></md-button>
-                  <md-button
-                    href="javascript:void(0)"
-                    class="md-just-icon md-simple md-pinterest"
-                    ><i class="fab fa-pinterest"></i
-                  ></md-button>
+                  <md-button href="javascript:void(0)" class="md-just-icon md-simple md-dribbble">
+                    <i class="fab fa-dribbble"></i>
+                  </md-button>
+                  <md-button href="javascript:void(0)" class="md-just-icon md-simple md-twitter">
+                    <i class="fab fa-twitter"></i>
+                  </md-button>
+                  <md-button href="javascript:void(0)" class="md-just-icon md-simple md-pinterest">
+                    <i class="fab fa-pinterest"></i>
+                  </md-button>
                 </div>
               </div>
             </div>
           </div>
           <div class="description text-center">
+            <div v-if="user" class="alert alert-success" role="alert">You are logged in!</div>
             <p>
               An artist of considerable range, Chet Faker — the name taken by
               Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
@@ -104,6 +92,7 @@
 
 <script>
 import { Tabs } from "@/components";
+import { mapGetters } from "vuex";
 export default {
   components: {
     Tabs
@@ -148,7 +137,10 @@ export default {
       return {
         backgroundImage: `url(${this.header})`
       };
-    }
+    },
+    ...mapGetters({
+      user: "user"
+    })
   }
 };
 </script>

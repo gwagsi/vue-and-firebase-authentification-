@@ -258,6 +258,12 @@ export default {
     },
     authenticated() {
       return this.user.loggedIn;
+    },
+    firstName() {
+      if (this.user.data.displayName) {
+        return this.user.data.displayName.split(" ")[0];
+      }
+      return null;
     }
   }
 };
