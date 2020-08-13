@@ -15,7 +15,8 @@ import HowTo from "./views/HowTo.vue";
 import Price from "./views/Price.vue";
 import TeacherSignup from "./views/TeacherSignup.vue";
 import Tutor from "./views/Tutor.vue";
-import { auth } from "./firebase";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 Vue.use(Router);
 
@@ -128,7 +129,7 @@ const routes = [
     name: "profile",
     components: { default: Profile, header: MainNavbar, footer: MainFooter },
     props: {
-      header: { colorOnScroll: 400 },
+      header: { colorOnScroll: 1 },
       footer: { backgroundColor: "black" },
     },
   },
